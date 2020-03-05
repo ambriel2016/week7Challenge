@@ -1,0 +1,111 @@
+.msgtable {
+    font-family: arial, sans-serif;
+    font-size: larger;
+    border-collapse: collapse;
+    width: 100%;
+    padding: 15px;
+    background-color: whitesmoke;
+    table-layout: fixed;
+}
+
+.msgth {
+    border: 1px solid azure;
+    text-align: center;
+    height: 25px;
+}
+
+.msgtd {
+    border: 1px solid azure;
+    text-align: center;
+    padding: 5px;
+    word-wrap: break-word;
+}
+
+.msgtr:nth-child(even) {
+    background-color: azure;
+}
+
+.footer-margin{
+    width:100%;
+    left: 0;
+    bottom: 0;
+    position:fixed;
+    text-align: center;
+}
+
+.maintitle {
+    background-color: transparent;
+    text-align: center;
+}
+
+.bodyhomepage {
+    background: no-repeat center center fixed url("http://res.cloudinary.com/di5v2kyqq/image/upload/v1583424810/email-3249062_1280_gl51sv.png");
+    background-size: cover;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.no-click-button {
+    pointer-events: none;
+    cursor: none;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+.loginContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 150px;
+}
+
+.loginContentForm {
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    position: relative;
+
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    max-width: 400px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px 10px 10px 10px;
+}
+
+#formFooter {
+    background-color: #f6f6f6;
+    border-top: 1px solid #dce8f1;
+    padding: 25px;
+    text-align: center;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+#inputtext, #firstName, #lastName, #email, #username, #password {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#titlelabel, #textlabel, #datelabel {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}

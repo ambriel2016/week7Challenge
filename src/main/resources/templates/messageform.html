@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles3.css}">
+</head>
+<body>
+<h1>Message Form</h1>
+
+<div class="bodyhomepage">
+
+    <div class="container loginContainer">
+        <div class="container loginContentForm">
+            <h2>New Message</h2>
+            <form action="#"
+                  th:action="@{/processmessage}" th:object="${message}" enctype="multipart/form-data" method="post">
+
+                <input type="hidden" th:field="*{id}"/>
+                <div>
+                    <label id="titlelabel">Title:
+                        <input type="text" placeholder="title" th:field="*{title}"/>
+                        <span th:if="${#fields.hasErrors('title')}"
+                              th:errors="*{title}"></span><br/>
+                    </label>
+                </div>
+
+                <div>
+                    <label id="textlabel1">Content:
+                        <input type="text" placeholder="content" th:field="*{content}"/>
+                        <span th:if="${#fields.hasErrors('content')}"
+                              th:errors="*{content}"></span><br/>
+                    </label>
+                </div>
+
+                <div>
+                    <label id="textlabel2">Posted date:
+                        <input type="text" placeholder="postedDate" th:field="*{postedDate}"/>
+                        <span th:if="${#fields.hasErrors('postedDate')}"
+                              th:errors="*{postedDate}"></span><br/>
+                    </label>
+                </div>
+
+                <div>
+                    <label id="textlabel3">Posted by:
+                        <input type="text" placeholder="postedBy" th:field="*{postedBy}"/>
+                        <span th:if="${#fields.hasErrors('postedBy')}"
+                              th:errors="*{postedBy}"></span><br/>
+                    </label>
+                </div>
+
+                <div>
+                    <label id="textlabel4">Photo:
+                        <input type="file" name="file"/><br/><br/>
+                    </label>
+                </div>
+
+                <br/>
+                <div style="padding: 10px">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="reset" class="btn btn-default">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="footerFrag">
+    <div class="footer-margin">
+        &copy; Copyright 2020 CRB
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -51,6 +51,7 @@ public class User {
         this.setEnabled(enabled);
         this.setUsername(username);
         this.setPhoto(photo);
+
     }
 
     public long getId() {
@@ -125,4 +126,5 @@ public class User {
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
+
 }

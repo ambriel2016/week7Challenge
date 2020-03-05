@@ -2,29 +2,36 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <title>Search List</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/styles3.css}">
-    <div th:insert="basicfrag :: headerFrag"></div>
-    <title>Admin</title>
+    <link rel="stylesheet" type="text/css" th:href="@{styles3.css}">
 </head>
-
 <body>
-<div th:insert="basicfrag :: navFrag"></div>
 
-<h2>Admin Page</h2>
+<div>
+    <a href="/"><buttom>Index</buttom></a>
+    <th:block>
+        <div th:each="car:${messageSearch}">
+            <h1 th:text="${car.manufacturer}"></h1>
+            <p th:inline="text">The car's manufacturer is [[${car.manufacturer}]]</p>
+            <div th:each="car: ${car}">
+                <p th:text="${car.manufacturer}"></p>
+                <p th:text="${car.model}"></p>
+                <p th:text="${car.year}"></p>
+                <p th:text="${car.msrp}"></p>
+                <p th:text="${car.carURL}"></p>
+            </div>
+        </div>
+    </th:block>
+</div>
 
-<p th:text="'Current User:' + ${user.username}"></p>
-<h4>email</h4>
-<p th:text="${user.email}"></p><br/>
-<h4>last name</h4>
-<p th:text="${user.lastName}"></p>
+<footer class="footer1">
+    <div class="container">
+        <p class="copyright">Copyright 2020 CRB.</p>
+    </div>
+</footer>
 
-<a href="/secure">Secure Page</a>
-
-<div th:insert="basicfrag :: scriptFrag"></div>
-
-<footer th:replace="base :: footer"></footer>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

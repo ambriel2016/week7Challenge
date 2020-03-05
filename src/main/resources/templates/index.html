@@ -1,54 +1,64 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <!-- Required meta tags-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Colorlib Templates">
-    <meta name="author" content="Colorlib">
-    <meta name="keywords" content="Colorlib Templates">
-
-    <!-- Title Page-->
-    <title>Index</title>
-
-    <!-- Icons font CSS-->
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-
-    <!-- Vendor CSS-->
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
-
-    <!-- Main CSS-->
-    <link href="css/main.css" rel="stylesheet" media="all">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles3.css}">
+    <div th:insert="basicfrag :: headerFrag"></div>
 </head>
+<body class="bodyhomepage">
+<div th:insert="basicfrag :: navFrag"></div>
 
-<body style="background: url('http://res.cloudinary.com/di5v2kyqq/image/upload/v1583331511/securityPage_aj2vj6.jpg') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover">
+<div class="jumbotron jumbotron-fluid maintitle">
+    <h1 class="display-4">All Messages</h1>
+</div>
+<div class="container" id="homepagecontainer">
 
-<header class="masthead">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="title col-lg-8 col-md-10 mx-auto">
-                <div class="card-body">
-                    <h1 class="card-title" style="text-align:center">Secure Page</h1>
-                    <a href="/secure" class="card-text" style="text-align:center">Secure Page</a>
+    <table class="msgtable">
+        <tr class="msgtr" style="width: 100%">
+            <th class="msgth">Title</th>
+            <th class="msgth">Content</th>
+            <th class="msgth">Posted Date</th>
+            <th class="msgth">Posted By</th>
+            <th class="msgth">Action</th>
+        </tr>
+        <tr class="msgtr" th:each="item : ${allmsg}">
+            <td class="msgtd" th:text="${item.getTitle()}"></td>
+            <td class="msgtd" th:text="${item.getContent()}"></td>
+            <td class="msgtd" th:text="${item.getPostedDate()}"></td>
+            <td class="msgtd" th:text="${item.getPostedBy()}"></td>
+            <td>
+                <div class="btn-group" role="group" aria-label="...">
+
+                    <button type="button" class="btn btn-default" style="padding: 5px">
+                        <span class="glyphicon glyphicon-search"></span>
+                        <a th:href="@{/detailmessage/{id}(id=${item.id})}">Detail</a></button>
+
+                    <button type="button" class="btn btn-default" style="padding: 5px"
+                            th:if="${item.getPostedBy() == loginuser}">
+                        <span class="glyphicon glyphicon-edit"></span>
+                        <a th:href="@{/updatemessage/{id}(id=${item.id}) }">
+                            Update</a></button>
+
+                    <button type="button" class="btn btn-default" style="padding: 5px"
+                            th:if="${item.getPostedBy() == loginuser}">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <a th:href="@{/deletemessage/{id}(id=${item.id})}">
+                            Delete</a></button>
                 </div>
-            </div>
-        </div>
-    </div>
-</header>
+            </td>
+        </tr>
+    </table>
+    <div th:insert="basicfrag :: footerFrag"></div>
+</div>
 
-<script src="vendor/jquery/jquery.min.js"></script>
-<!-- Vendor JS-->
-<script src="vendor/select2/select2.min.js"></script>
-<script src="vendor/datepicker/moment.min.js"></script>
-<script src="vendor/datepicker/daterangepicker.js"></script>
+<div th:insert="basicfrag :: scriptFrag"></div>
 
-<!-- Main JS-->
-<script src="js/global.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Message By User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles3.css}">
+    <div th:insert="basicfrag :: headerFrag"></div>
+    <title>Message By User</title>
+</head>
+<body class="bodyhomepage">
+<div th:insert="basicfrag :: navFrag"></div>
+
+<div class="container" id="loginContainer">
+    <div class="container loginContentForm">
+        <h2>Detail Message</h2>
+        <div th:object="${user}">
+            <div>
+                <label>User:</label>
+                <p th:text="*{username}"></p>
+                <label>Email:</label>
+                <p th:text="*{email}"></p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default">Cancel</button>
+        <!--<div th:object="${onemsg}">-->
+        <div th:each="item : ${allmsg}">
+
+            <div>
+                <label id="titlelabel">Title:
+                    <p type="text" th:field="*{item.getTitle()}"></p>
+                </label></div>
+
+            <div>
+                <label id="textlabel">Content:
+                    <p type="text" th:field="*{item.getContent()}"/>
+                </label>
+            </div>
+
+            <br/>
+
+            <div class="btn-group" role="group" aria-label="...">
+
+                <button type="button" class="btn btn-default" style="padding: 5px">
+                    <span class="glyphicon glyphicon-search"></span>
+                    <a th:href="@{/detailmessage/{id}(id=${item.id})}">Detail</a></button>
+
+                <button type="button" class="btn btn-default" style="padding: 5px">
+                    <span class="glyphicon glyphicon-edit"></span>
+                    <a th:href="@{/updatemessage/{id}(id=${item.id})}">
+                        Update</a></button>
+
+
+                <button type="button" class="btn btn-default" style="padding: 5px">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    <a th:href="@{/deletemessage/{id}(id=${item.id})}">
+                        Delete</a></button>
+            </div>
+
+        </div>
+    </div>
+    <div th:insert="basicfrag :: footerFrag"></div>
+</div>
+
+<div th:insert="basicfrag :: scriptFrag"></div>
+
+<footer th:replace="base :: footer"></footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
