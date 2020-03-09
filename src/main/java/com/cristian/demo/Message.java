@@ -14,12 +14,12 @@ public class Message {
 
     @Column(name="title")
     @NonNull
-    @Size(min=3, max=30)
+    @Size(min=1, max=30)
     private String title;
 
     @Column(name="content")
     @NonNull
-    @Size(min=10, max=300)
+    @Size(min=1, max=300)
     private String content;
 
     @Column(name="postedDate")
@@ -32,19 +32,20 @@ public class Message {
     private String photo;
 
     @ManyToOne
-    @JoinColumn(name="message_id")
-    private Message message;
+    @JoinColumn(name="user_id")
+    private User user;
 
     public Message() {
     }
 
-    public Message(long id, String title, String content, String postedDate, String postedBy, String photo){
+    public Message(long id, String title, String content, String postedDate, String postedBy, String photo, User u){
         this.id = id;
         this.title = title;
         this.content = content;
         this.postedDate = postedDate;
         this.postedBy = postedBy;
         this.photo = photo;
+        this.user=u;
     }
 
     public long getId() {
@@ -95,4 +96,11 @@ public class Message {
         this.photo = photo;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

@@ -14,6 +14,8 @@ public class DataLoader implements CommandLineRunner {
 
     @Autowired
     RoleRepository roleRepository;
+    @Autowired
+    MessageRepository messageRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -40,5 +42,10 @@ public class DataLoader implements CommandLineRunner {
         user = new User("admin@admin.com", "password", "Admin", "User", true, "admin", "avatar.png");
         user.setRoles(Arrays.asList(adminRole));
         userRepository.save(user);
+
+        Message m= new Message(1,"1","1","1","1",
+
+                "https://res.cloudinary.com/di5v2kyqq/image/upload/v1583418214/y7ediixk9eamiin7robr.jpg",user);
+        messageRepository.save(m);
     }
 }

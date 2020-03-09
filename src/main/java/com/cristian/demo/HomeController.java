@@ -62,6 +62,7 @@ public class HomeController {
     @PostMapping("/processmessage")
     public String processCar(@ModelAttribute Message message,
                              @RequestParam("file") MultipartFile file) {
+        User user = userService.getUser();
         if (file.isEmpty()) {
             return "redirect:/addmessage";
         }
@@ -69,6 +70,7 @@ public class HomeController {
             Map uploadResult = cloudc.upload(file.getBytes(),
                     ObjectUtils.asMap("resourcetype", "auto"));
             message.setPhoto(uploadResult.get("url").toString());
+            message.setUser(user);
             messageRepository.save(message);
         } catch (IOException e) {
             e.printStackTrace();
