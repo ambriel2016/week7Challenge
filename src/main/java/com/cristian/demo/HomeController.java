@@ -79,27 +79,6 @@ public class HomeController {
         return "redirect:/";
     }
 
-//    @RequestMapping("/processmessage")
-//    public String processMessage(@Valid @ModelAttribute("message") Message message,
-//                             BindingResult result, Model model){
-//        if (result.hasErrors())
-//            return "addmessage";
-//        else {
-//            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-//            Calendar cal = Calendar.getInstance();
-//            Date date = cal.getTime();
-//            String todaysdate = dateFormat.format(date);
-//            message.setPostedDate(todaysdate);
-//
-//            User currentUser = userService.getUser();
-//            message.setPostedBy(currentUser.getUsername());
-//            message.setUsers(Arrays.asList(currentUser));
-//
-//            messageRepository.save(message);
-//            return "redirect:/";
-//        }
-//    }
-
     @RequestMapping("/detailmessage/{id}")
     public String showmessage(@PathVariable("id") long id, Model model){
         model.addAttribute("message", messageRepository.findById(id).get());
@@ -112,39 +91,12 @@ public class HomeController {
         return "messageform";
     }
 
-    //    @RequestMapping("/processupdatemsg")
-//    @PostMapping("/updateprocess")
-//    public String processUpdateMessage(@Valid @ModelAttribute("message") Message message,
-//                                   BindingResult result, Model model){
-//        if (result.hasErrors())
-//            return "updatemessage";
-//        else {
-//            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-//            Calendar cal = Calendar.getInstance();
-//            Date date = cal.getTime();
-//            String todaysdate = dateFormat.format(date);
-//            message.setPostedDate(todaysdate);
-//
-//            User currentUser = userService.getUser();
-//            message.setPostedBy(currentUser.getUsername());
-//            message.setUser(Arrays.asList(currentUser));
-//
-//            messageRepository.save(onemsg);
-//            return "redirect:/";
-//        }
-//    }
 
     @RequestMapping("/deletemessage/{id}")
     public String deleteMsg(@PathVariable("id") long id, Model model) {
         messageRepository.deleteById(id);
         return "redirect:/";
     }
-
-//    @RequestMapping("/search")
-//    public String searchPerson(@RequestParam("search") String search, Model model){
-//        model.addAttribute("messageSearch", messageRepository.findByTitle(search));
-//        return "searchList";
-//    }
 
     @RequestMapping("/admin")
     public String admin(Model model) {

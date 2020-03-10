@@ -59,6 +59,24 @@
 
 <body style="background: url('http://res.cloudinary.com/di5v2kyqq/image/upload/v1583424810/email-3249062_1280_gl51sv.png') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover">
 
+<div class="card">
+
+</div>
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4" >
+        <div class="card"th:each="message : ${allmsg}">
+            <div class="card-block">
+                <div class="card-body">
+                    <h6 class="card-title" style="text-align:center"> [[${message.title}]]</h6>
+                    <p class="card-text" style="text-align:center"> [[${message.content}]]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4"></div>
+</div>
+
 <th:block th:fragment="scriptFrag">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
